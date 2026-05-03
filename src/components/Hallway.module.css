@@ -1,0 +1,30 @@
+.hallway {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* width/height set inline */
+}
+
+/* Each segment is an <img> rendered at its declared scene-pixel size.
+ * Composed left-to-right by the hallway factory. */
+.segment {
+  position: absolute;
+  display: block;
+  /* image-rendering: pixelated is inherited from index.css * selector */
+  pointer-events: none;
+  user-select: none;
+}
+
+.title {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #f5d090;
+  text-shadow: 1px 1px 0 #000, 0 0 4px rgba(255, 200, 110, 0.4);
+  pointer-events: none;
+  z-index: 5;
+}

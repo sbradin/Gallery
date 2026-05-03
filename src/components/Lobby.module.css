@@ -1,0 +1,198 @@
+/* === Lobby ====================================================== */
+
+.lobby {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  /* width/height set inline. Floor color also set inline (theme). */
+}
+
+/* Wood plank floor: long horizontal boards with subtle grain + lighting. */
+.floor {
+  position: absolute;
+  inset: 0;
+  background-color: #5b3a22;
+  background-image:
+    /* warm spotlight from above */
+    radial-gradient(
+      ellipse 70% 55% at 50% 38%,
+      rgba(255, 200, 130, 0.18),
+      transparent 70%
+    ),
+    /* faint plank grain */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    /* horizontal board separators */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 11px,
+      rgba(0, 0, 0, 0.35) 11px,
+      rgba(0, 0, 0, 0.35) 12px
+    );
+}
+
+/* Walls: deep green wainscoting with a darker baseboard band. */
+.wallNorth,
+.wallSouth,
+.wallWest,
+.wallEast {
+  position: absolute;
+  background:
+    linear-gradient(180deg, #1f3a2c 0%, #16291f 60%, #0d1c14 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.wallNorth {
+  left: 0;
+  right: 0;
+  top: 0;
+  /* height set inline */
+  background:
+    linear-gradient(180deg, #16291f 0%, #1f3a2c 35%, #1a3326 100%);
+}
+
+.wallSouth {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* height set inline */
+  background:
+    linear-gradient(0deg, #16291f 0%, #1f3a2c 60%, #2a4a36 100%);
+}
+
+.wallWest {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  /* width set inline */
+  background:
+    linear-gradient(90deg, #16291f 0%, #1f3a2c 60%, #1a3326 100%);
+}
+
+.wallEast {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* width set inline */
+  background:
+    linear-gradient(270deg, #16291f 0%, #1f3a2c 60%, #1a3326 100%);
+}
+
+/* Baseboard / molding lines along the inner edge of each wall. */
+.moldingNorth {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(180deg, #6b4a2c, #3a2914);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  /* top set inline (= wall thickness) */
+}
+.moldingSouth {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(0deg, #6b4a2c, #3a2914);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  /* bottom set inline */
+}
+.moldingWest {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(90deg, #6b4a2c, #3a2914);
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.5);
+  /* left set inline */
+}
+.moldingEast {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(270deg, #6b4a2c, #3a2914);
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.5);
+  /* right set inline */
+}
+
+/* Center rug: deep green with gold trim, evokes the reference. */
+.rug {
+  position: absolute;
+  background:
+    /* trim band */
+    linear-gradient(0deg, transparent 5%, rgba(190, 150, 80, 0.4) 6%, rgba(190, 150, 80, 0.4) 7%, transparent 8%, transparent 92%, rgba(190, 150, 80, 0.4) 93%, rgba(190, 150, 80, 0.4) 94%, transparent 95%),
+    linear-gradient(90deg, transparent 4%, rgba(190, 150, 80, 0.4) 5%, rgba(190, 150, 80, 0.4) 6%, transparent 7%, transparent 93%, rgba(190, 150, 80, 0.4) 94%, rgba(190, 150, 80, 0.4) 95%, transparent 96%),
+    radial-gradient(ellipse at center, #2c4a36 0%, #1d3324 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 1px;
+  /* position/size inline */
+}
+
+/* Welcome plaque on the south wall. */
+.welcomePlaque {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* bottom set inline */
+  padding: 2px 6px;
+  background:
+    linear-gradient(180deg, #b08858 0%, #7a5a36 100%);
+  border: 1px solid #3a2914;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: #1a1208;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Decorative potted plant — pure CSS, four corner placements. */
+.plant {
+  position: absolute;
+  width: 14px;
+  height: 18px;
+  /* left/top set inline */
+  pointer-events: none;
+}
+.plant::before {
+  /* leaves */
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 12px;
+  background:
+    radial-gradient(ellipse at 30% 60%, #3a7a3a 0%, #2a5a2a 60%, transparent 70%),
+    radial-gradient(ellipse at 70% 50%, #4a8a4a 0%, #2a5a2a 60%, transparent 70%),
+    radial-gradient(ellipse at 50% 30%, #5a9a5a 0%, #3a7a3a 70%, transparent 80%);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.4));
+}
+.plant::after {
+  /* terracotta pot */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 7px;
+  background: linear-gradient(180deg, #a45838 0%, #6e3a1e 100%);
+  border: 1px solid #3a1f0a;
+  border-radius: 1px 1px 2px 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}

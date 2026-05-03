@@ -1,0 +1,120 @@
+/*
+ * Doorway visual = a "carved out" rectangle in the wall. The trigger rect
+ * sits just inside the walkable area; the visual cutout extends INTO the
+ * wall from there. Each orientation needs a slightly different layout
+ * because the cutout extends in different directions.
+ */
+
+.door {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Dark recess showing the corridor leading out of the lobby. */
+.recess {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      #0a0a08 0%,
+      #1a1408 60%,
+      #2a1f10 100%
+    );
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.85),
+    inset 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Wood frame around the recess. */
+.frame {
+  position: absolute;
+  inset: -3px;
+  border: 3px solid;
+  border-image: linear-gradient(180deg, #6b4a2c 0%, #3a2914 100%) 1;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px #2a1c0a,
+    0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Runner rug going INTO the doorway. Direction set per orientation. */
+.runner {
+  position: absolute;
+  background: linear-gradient(
+    var(--runner-angle, 0deg),
+    rgba(120, 90, 50, 0.5) 0%,
+    rgba(70, 50, 25, 0.7) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Wooden sign plaque hanging on the wall above/beside the doorway. */
+.sign {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, #b08858 0%, #8a6638 50%, #6a4828 100%);
+  border: 1px solid #2a1c0a;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  font-size: 7px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #1a1208;
+  white-space: nowrap;
+  padding: 2px 5px;
+  pointer-events: none;
+}
+
+/* Brass lamp fixture above the doorway. */
+.lamp {
+  position: absolute;
+  width: 10px;
+  height: 6px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #f5d090 0%, #b08040 50%, #5a3818 100%);
+  border: 1px solid #2a1408;
+  border-radius: 4px 4px 1px 1px;
+  pointer-events: none;
+  z-index: 2;
+}
+.lamp::before {
+  /* mounting bracket */
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 2px;
+  background: #3a2914;
+}
+
+.lampBelow {
+  border-radius: 1px 1px 4px 4px;
+  background:
+    radial-gradient(ellipse at 50% 100%, #f5d090 0%, #b08040 50%, #5a3818 100%);
+}
+.lampBelow::before {
+  top: auto;
+  bottom: -2px;
+}
+
+/* Warm halo of light cast by the lamp onto the doorway sign. */
+.halo {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 200, 110, 0.4) 0%,
+    rgba(255, 200, 110, 0.15) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
